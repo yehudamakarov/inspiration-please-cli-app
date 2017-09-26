@@ -16,6 +16,11 @@ class InspirationPlease::DatePage
   end
 
   def jewish_history
+    if doc.css("div#jewish_history.main div.link.header").empty?
+      puts ""
+      puts "Today in Jewish History is a canvas waiting to be painted by you. Try the daily thought. :) "
+      puts ""
+    end
     doc.css("div#jewish_history.main div.link.header").each_with_index do |e, i|
       puts "-------------#{e.text}-------------"
       a = doc.css("#JewishHistoryBody#{i} > p")
