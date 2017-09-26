@@ -7,7 +7,6 @@ class InspirationPlease::CLI
   end
 
   def call
-    puts "This is the CLI"
     list_date_options
     menu
   end
