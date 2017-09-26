@@ -17,6 +17,7 @@ class InspirationPlease::DatePage
 
   def jewish_history
     binding.pry
+    
     puts "THIS IS GOING TO BE THE JEWISH HISTORY OF TODAY. css selector for the jewish_history will puts the jewish_history"
   end
 end
