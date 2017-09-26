@@ -20,7 +20,7 @@ class InspirationPlease::CLI
     puts ""
     input = nil
     while input != 'exit'
-      puts "Press 1 for more info on today's day in Jewish History. Press 2 for more info on today's daily thought. Or press exit."
+      puts "Press 1 for more info on today's day in Jewish History. Press 2 for more info on today's Daily Thought. Or press exit."
       puts ""
       input = gets.strip
       case input
