@@ -13,13 +13,13 @@ class InspirationPlease::CLI
   end
 
   def list_date_options
+    puts "There is something special about today. "
     # if there is jewish_history and if not...
     puts "Today there is Jewish History and a Daily Thought"
     puts ""
   end
 
   def menu
-    puts "There is something special about today. "
     puts ""
     input = nil
     while input != 'exit'
