@@ -6,11 +6,11 @@ class InspirationPlease::DatePage
   attr_accessor :doc, :date, :history, :daily_thought, :titles, :descriptions, :daily_thought_header, :daily_thought_description
 
   def initialize
-    time = Time.new
-    @date = time.strftime("%m/%d/%Y")
-    @date[3] = '' if @date[3] == '0'
-    @date[0] = '' if @date[0] == '0'
-    @doc = Nokogiri::HTML(open("http://www.chabad.org/calendar/view/day.asp?tdate=#{@date}"))
+    # time = Time.new
+    # @date = time.strftime("%m/%d/%Y")
+    # @date[3] = '' if @date[3] == '0'
+    # @date[0] = '' if @date[0] == '0'
+    @doc = Nokogiri::HTML(open("http://www.chabad.org/calendar/view/day.asp?tdate=9/4/2017"))
     @titles = []
     @descriptions = []
     @daily_thought_header = ""
@@ -38,10 +38,8 @@ class InspirationPlease::DatePage
   def jewish_history
     doc.css("div#jewish_history.main div.link.header").each_with_index do |e, i|
       # shovel this into the hash one by one
-      binding.pry
-      @history["#{i+1}. -------------#{e.text}-------------"] = ""
-
-      doc.css("#JewishHistoryBody#{i} > p").map{|d| "" << "#{d.text}" unless d.text.include?("Link")}
+      @history["#{e.text}"] = "#{(doc.css("#JewishHistoryBody#{i} > p").map{|d| "" << "#{d.text}" unless d.text.include?("Link")}.take 1).join}"
     end
+    binding.pry
   end
 end
