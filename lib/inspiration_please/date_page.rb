@@ -1,43 +1,42 @@
 class InspirationPlease::DatePage
 
-  attr_accessor :doc, :date
+  attr_accessor :doc, :date, :titles, :descriptions, :daily_thought_header, :daily_thought_description
 
   def initialize
     time = Time.new
     @date = time.strftime("%m/%d/%Y")
     @date[3] = '' if @date[3] == '0'
     @date[0] = '' if @date[0] == '0'
-    @doc = Nokogiri::HTML(open("http://www.chabad.org/calendar/view/day.asp?tdate=9/4/2017"))
+    @doc = Nokogiri::HTML(open("http://www.chabad.org/calendar/view/day.asp?tdate=#{@date}"))
+    @titles = []
+    @descriptions = []
+    @daily_thought_header = ""
+    @daily_thought_description = ""
   end
 
   def daily_thought
-    puts ""
-    header = doc.css("div.link.header.blue").text
-    header.delete! "\n" "\t"
-    puts "-------------#{header}-------------"
-    puts ""
+    self.daily_thought_header = "-------------#{doc.css("div.link.header.blue").text.delete! "\n" "\t"}-------------"
     doc.css("#DailyThoughtBody0 p").each do |e|
-      puts "#{e.text}"
-      puts ""
+      self.daily_thought_description << "#{e.text} "
     end
-    puts""
-    puts "#{doc.css("#footnotetable > div").text}"
-    puts ""
+    self.daily_thought_description << "#{doc.css("#footnotetable > div").text} "
+  end
+
+  def jewish_history?
+    !doc.css("div#jewish_history.main div.link.header").empty?
+  end
+
+  def daily_thought?
+    !doc.css("div.link.header.blue").empty?
   end
 
   def jewish_history
-    if doc.css("div#jewish_history.main div.link.header").empty?
-      puts ""
-      puts "Today in Jewish History is a canvas waiting to be painted by you. Try the daily thought. :) "
-      puts ""
-    else
-      doc.css("div#jewish_history.main div.link.header").each_with_index do |e, i|
-        puts "-------------#{e.text}-------------"
-        a = doc.css("#JewishHistoryBody#{i} > p")
-        binding.pry
-        # a.pop if a[-1].text.start_with?("Link")
-        puts "#{a.text}"
-        puts ""
+    doc.css("div#jewish_history.main div.link.header").each_with_index do |e, i|
+      @titles << "-------------#{e.text}-------------"
+      a = doc.css("#JewishHistoryBody#{i} > p")
+      a.each do |e|
+        break if e.text.include?("Link")
+        @descriptions << "#{e.text}"
       end
     end
   end

@@ -25,12 +25,40 @@ class InspirationPlease::CLI
       input = gets.strip
       case input
       when "1"
-        self.date_page.jewish_history
+        print_jewish_history
       when "2"
-        self.date_page.daily_thought
+        print_daily_thought
       when "exit"
         goodbye
       end
+    end
+  end
+
+  def print_jewish_history
+    if date_page.jewish_history?
+      date_page.jewish_history
+      date_page.titles.each_with_index do |t, i|
+        puts "#{t}"
+        puts "#{date_page.descriptions[i]}"
+        puts ""
+      end
+    else
+      puts ""
+      puts "Today in Jewish History is a canvas waiting to be painted by you. Try the daily thought. :) "
+      puts ""
+    end
+  end
+
+  def print_daily_thought
+    if date_page.daily_thought?
+      date_page.daily_thought
+      puts "#{date_page.daily_thought_header}"
+      puts "#{date_page.daily_thought_description}"
+      puts ""
+    else
+      puts ""
+      puts "Maybe you have a daily thought? :) "
+      puts ""
     end
   end
 
