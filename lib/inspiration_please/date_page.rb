@@ -1,6 +1,9 @@
 class InspirationPlease::DatePage
-
-  attr_accessor :doc, :date, :titles, :descriptions, :daily_thought_header, :daily_thought_description
+# Must make a hash
+# :history = {title1 => :describtion1, title2 => :describtion2}
+# :daily_thought = {:header => :describtion}
+# and #fetch()
+  attr_accessor :doc, :date, :history, :daily_thought, :titles, :descriptions, :daily_thought_header, :daily_thought_description
 
   def initialize
     time = Time.new
@@ -12,6 +15,8 @@ class InspirationPlease::DatePage
     @descriptions = []
     @daily_thought_header = ""
     @daily_thought_description = ""
+    @history = {}
+    @daily_thought = {}
   end
 
   def daily_thought
@@ -32,12 +37,11 @@ class InspirationPlease::DatePage
 
   def jewish_history
     doc.css("div#jewish_history.main div.link.header").each_with_index do |e, i|
-      @titles << "-------------#{e.text}-------------"
-      a = doc.css("#JewishHistoryBody#{i} > p")
-      a.each do |e|
-        break if e.text.include?("Link")
-        @descriptions << "#{e.text}"
-      end
+      # shovel this into the hash one by one
+      binding.pry
+      @history["#{i+1}. -------------#{e.text}-------------"] = ""
+
+      doc.css("#JewishHistoryBody#{i} > p").map{|d| "" << "#{d.text}" unless d.text.include?("Link")}
     end
   end
 end
