@@ -12,7 +12,14 @@ class InspirationPlease::CLI
   end
 
   def list_date_options
+    puts "----- #{date_page.date} -----"
+    puts "---*-- #{date_page.date_hebrew} --*---"
+    puts "----- #{date_page.date_english} -----"
+    puts ""
     puts "There is something special about today. "
+    puts ""
+    puts "=== - ==="
+    puts ""
     puts ""
   end
 
@@ -22,14 +29,16 @@ class InspirationPlease::CLI
     while input != 'exit'
       puts "=== - ==="
       puts ""
-      puts "Press 1 for more info on today's day in Jewish History. Press 2 for more info on today's Daily Thought. Or press exit."
+      puts "Enter '1' for today's day in Jewish History. Enter '2' for today's Daily Thought. Or enter 'exit'."
       puts ""
       input = gets.strip
       case input
       when "1"
         print_jewish_history
+        list_date_options
       when "2"
         print_daily_thought
+        list_date_options
       when "exit"
         goodbye
       end
@@ -43,6 +52,7 @@ class InspirationPlease::CLI
         puts ""
         puts "#{content}"
         puts ""
+        puts "--==--"
       end
     else
       puts ""
@@ -51,12 +61,18 @@ class InspirationPlease::CLI
     end
   end
 
+  def date
+  end
+
+
   def print_daily_thought
     if date_page.daily_thought?
-      date_page.daily_thought
-      puts "#{date_page.daily_thought_header}"
-      puts "#{date_page.daily_thought_description}"
-      puts ""
+      date_page.daily_thought.each do |header, content|
+        puts "-------------#{header}-------------"
+        puts ""
+        puts "#{content}"
+        puts ""
+      end
     else
       puts ""
       puts "Maybe you have a daily thought? :) "
@@ -65,6 +81,8 @@ class InspirationPlease::CLI
   end
 
   def goodbye
+    puts""
     puts "Make it a day full of good things."
+    puts ""
   end
 end
