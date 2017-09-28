@@ -20,6 +20,8 @@ class InspirationPlease::CLI
     puts ""
     input = nil
     while input != 'exit'
+      puts "=== - ==="
+      puts ""
       puts "Press 1 for more info on today's day in Jewish History. Press 2 for more info on today's Daily Thought. Or press exit."
       puts ""
       input = gets.strip
@@ -36,10 +38,10 @@ class InspirationPlease::CLI
 
   def print_jewish_history
     if date_page.jewish_history?
-      date_page.jewish_history
-      date_page.titles.each_with_index do |t, i|
-        puts "#{t}"
-        puts "#{date_page.descriptions[i]}"
+      date_page.history.each do |header, content|
+        puts "-------------#{header}-------------"
+        puts ""
+        puts "#{content}"
         puts ""
       end
     else
