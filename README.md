@@ -1,28 +1,16 @@
 # InspirationPlease
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/inspiration_please`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+There are those that seek spiritual inspiration. Let's eliminate the cost for now.
+Run this gem from the command line and you will be provided with today's day in Jewish History and the Daily Thought as found on Chabad.org.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'inspiration_please'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install inspiration_please
+Clone this repository and navigate to it. Run `rake install`.
+Now you can simply type `inspiration-please` in your terminal and interact with the command line interface.
 
 ## Usage
 
-TODO: Write usage instructions here
+Just follow the instructions that print to the command line.
 
 ## Development
 
@@ -32,7 +20,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/yehudamakarov/inspiration_please.
+Bug reports and pull requests are welcome on GitHub at https://github.com/yehudamakarov/inspiration-please.
 
 ## License
 
