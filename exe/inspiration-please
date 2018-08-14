@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/inspiration_please.rb'
+
+
+InspirationPlease::CLI.new.call
