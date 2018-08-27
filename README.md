@@ -1,27 +1,29 @@
-# InspirationPlease
+Inspiration Please
+==================
 
-There are those that seek spiritual inspiration. Let's eliminate the cost for now.
-Run this gem from the command line and you will be provided with today's day in Jewish History and the Daily Thought as found on Chabad.org.
+Access inspiring history and wisdom from the command line.
 
-## Installation
+### Installation
 
-Clone this repository and navigate to it. Run `rake install`.
-Now you can simply type `inspiration-please` in your terminal and interact with the command line interface.
+1. Clone this repository and navigate to it.
+2. Run `rake install`.
+3. Now you can simply type `inspiration-please` in your terminal and interact with the command line interface.
 
-## Usage
+### Usage
 
 Just follow the instructions that print to the command line.
 
-## Development
+While engaging the command line interface, you can: 
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+1. Type `​1`​ to retrieve information about the day’s date in Jewish history.
+2. Type `​2`​ for an inspiring daily thought.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+### Contribute
 
-## Contributing
+Please feel free to contribute. Just open a pull request. If something is wrong or doesn't work, see if you can figure out why. If you can't, reach out to me or file an issue on Github. \<3.
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/yehudamakarov/inspiration-please.
+Bug reports and pull requests are welcome on GitHub at [https://github.com/yehudamakarov/inspiration-please](https://github.com/yehudamakarov/inspiration-please.).
 
-## License
+### License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+This product is registered under the MIT License - Copyright (c) 2018 Yehuda (Nikita) Makarov. See `./LICENSE`.

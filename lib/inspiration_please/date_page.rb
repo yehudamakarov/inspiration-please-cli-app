@@ -11,17 +11,17 @@ class InspirationPlease::DatePage
     @doc = Nokogiri::HTML(open("https://www.chabad.org/calendar/view/day.asp?tdate=#{@todays_date}"))
 
     @history = {}
-    jewish_history_hash_scrape
+    scrape_jewish_history
 
     @daily_thought = {}
-    daily_thought_hash_scrape
+    scrape_daily_thought
 
     @date_english = doc.search('#PrimaryHeader').text
     @date_hebrew = doc.search('#SecondaryHeader > a').text
 
   end
 
-  def jewish_history_hash_scrape
+  def scrape_jewish_history
     doc.css('div#jewish_history.main div.link.header').each_with_index do |e, i|
       @history[e.text] = doc.css("#JewishHistoryBody#{i} > p").map do |d|
         d.text unless d.text.include?('Link')
@@ -29,7 +29,7 @@ class InspirationPlease::DatePage
     end
   end
 
-  def daily_thought_hash_scrape
+  def scrape_daily_thought
     text = ''
     doc.css('#DailyThoughtBody0 p').each { |e| text << "#{e.text} \n\n" }
     text << doc.css('#footnotetable > div').text
