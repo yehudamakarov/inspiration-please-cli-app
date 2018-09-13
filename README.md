@@ -3,6 +3,11 @@ Inspiration Please
 
 Access inspiring history and wisdom from the command line.
 
+### Demo
+
+Youtube
+https://youtu.be/t4eLOtylodU
+
 ### Installation
 
 1. Clone this repository and navigate to it.
