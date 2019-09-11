@@ -37,6 +37,7 @@ class InspirationPlease::CLI
 
   def list_date
     puts justify_text(" Today is:  ", "≡")
+    puts ''
     puts justify_text(date_page.todays_date, ' ')
     puts justify_text(date_page.date_hebrew, ' ')
     puts justify_text(date_page.date_english, ' ')
