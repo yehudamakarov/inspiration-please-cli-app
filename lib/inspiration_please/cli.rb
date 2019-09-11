@@ -16,7 +16,9 @@ class InspirationPlease::CLI
     begin
         while input != 'exit'
             puts ''
-            puts "Enter '1' for today's day in Jewish History. Enter '2' for today's Daily Thought. Or enter 'exit'."
+            puts " > Enter '1' for today's day in Jewish History." 
+            puts " > Enter '2' for today's Daily Thought." 
+            puts " > Or enter 'exit'."
             puts ''
             input = gets.strip
             case input
@@ -34,11 +36,12 @@ class InspirationPlease::CLI
   end
 
   def list_date
-    puts justify_text(date_page.todays_date, '-')
-    puts justify_text(date_page.date_hebrew, '-')
-    puts justify_text(date_page.date_english, '-')
+    puts justify_text(" Today is:  ", "≡")
+    puts justify_text(date_page.todays_date, ' ')
+    puts justify_text(date_page.date_hebrew, ' ')
+    puts justify_text(date_page.date_english, ' ')
     puts ''
-    puts justify_text('There is something special about today.', '*')
+    puts justify_text('There is something special about today.', '≡')
     puts ''
   end
 
