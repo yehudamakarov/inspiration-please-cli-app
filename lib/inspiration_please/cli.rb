@@ -85,7 +85,7 @@ class InspirationPlease::CLI
   def goodbye
     puts "\n"
     puts justify_text('', '.')
-    puts justify_text('Make it a day full of good things.', '.')
+    puts justify_text(' Make it a day full of good things. ', '.')
     puts justify_text(' ♥ ', '.')
   end
 
